@@ -1,5 +1,9 @@
-<div class="content-wrapper">
-  <!-- Content Header (Page header) -->
-<?= $pageContent; ?>
-</div>
-<!-- /.content-wrapper -->
+
+    <!-- Begin Page Content -->
+    <div class="container-fluid">
+<?php echo $pageContent; ?>
+    </div>
+    <!-- /.container-fluid -->
+
+  </div>
+  <!-- End of Main Content -->

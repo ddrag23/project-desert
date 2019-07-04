@@ -5,14 +5,16 @@ class Dashboard extends MY_Controller
   public function __construct()
   {
     parent::__construct();
-    $this->cekLogin();
+    // $this->cekLogin();
+    $this->load->model('Model_barang');
   }
 
   public function index()
   {
+    $data['barang'] = $this->Model_barang->get()->result();
     $data['pageTitle'] = 'Dashboard';
-    $data['pageContent'] = '<h1>Ini fungsi index dari controller dashboard</h1><h1>Ini fungsi index dari controller dashboard</h1><h1>Ini fungsi index dari controller dashboard</h1>';
-
+    $data['pageContent'] = $this->load->view('dashboard/main.php',  $data, TRUE);
     $this->load->view('template/layout', $data);
+
   }
 }
