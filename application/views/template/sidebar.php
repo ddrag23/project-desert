@@ -40,6 +40,18 @@
   <?php endif; ?>
 
     <!-- Divider -->
+    <?php if ($this->session->userdata('level') == "penjual"): ?>
+      <li class="nav-item active">
+        <a class="nav-link" href="index.html">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>Profile</span></a>
+      </li>
+      <li class="nav-item active">
+        <a class="nav-link" href="<?php echo base_url('penjual/index/'); ?>">
+          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <span>List Produk</span></a>
+      </li>
+    <?php endif; ?>
     <?php if ($this->session->userdata('level') == "users"): ?>
 
     <hr class="sidebar-divider">
