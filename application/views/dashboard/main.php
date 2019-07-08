@@ -6,7 +6,6 @@
   <div class="card-body">
     <h5 class="card-title mb-2"><?= $brg->nama; ?></h5>
     <small ><?= $brg->deskripsi ?></small><br>
-    <span class="badge badge-pill badge-success mb-3"><?= $brg->harga; ?></span><br>
     <a href="#" class="btn btn-primary">lihat rincian</a>
   </div>
 </div>

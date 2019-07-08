@@ -2,6 +2,8 @@
 <div id="wrapper">
 
   <!-- Sidebar -->
+  <?php if (!empty($this->session->userdata('username'))): ?>
+
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
@@ -23,7 +25,7 @@
         <span>Dashboard</span></a>
     </li>
     <li class="nav-item active">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="<?= base_url('users'); ?>">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>list admin</span></a>
     </li>
@@ -33,7 +35,7 @@
         <span>list produk</span></a>
     </li>
     <li class="nav-item active">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="<?php echo base_url('penjual'); ?>">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>list penjual</span></a>
     </li>
@@ -87,6 +89,8 @@
     </div>
 
   </ul>
+<?php endif; ?>
+
   <!-- End of Sidebar -->
   <!-- Content Wrapper -->
   <div id="content-wrapper" class="d-flex flex-column">
@@ -191,12 +195,21 @@
           <div class="topbar-divider d-none d-sm-block"></div>
 
           <!-- Nav Item - User Information -->
-          <a href="<?php echo base_url('auth/login'); ?>" class="btn btn-primary btn-icon-split" style="    margin-top: 15px; height: 38px;width: 6em;">
-            <span class="icon text-white-50">
-              <i class="fas fa-user"></i>
-            </span>
-            <span class="text">Login</span>
-          </a>
+          <?php if (!empty($this->session->userdata('username'))): ?>
+            <a href="<?php echo base_url('auth/logout'); ?>" class="btn btn-primary btn-icon-split" style="    margin-top: 15px; height: 38px;width: 6em;">
+              <span class="icon text-white-50">
+                <i class="fas fa-user"></i>
+              </span>
+              <span class="text">Logout</span>
+            </a>
+          <?php else: ?>
+            <a href="<?php echo base_url('auth/login'); ?>" class="btn btn-primary btn-icon-split" style="    margin-top: 15px; height: 38px;width: 6em;">
+              <span class="icon text-white-50">
+                <i class="fas fa-user"></i>
+              </span>
+              <span class="text">Login</span>
+            </a>
+          <?php endif; ?>
           <!-- <li class="nav-item dropdown no-arrow"> -->
             <!-- <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
               <span class="mr-2 d-none d-lg-inline text-gray-600 small">Valerie Luna</span>

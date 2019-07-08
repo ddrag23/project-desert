@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Guru extends MY_Controller {
+class Penjual extends MY_Controller {
 
 	public function __construct()
 	{
@@ -17,8 +17,8 @@ class Guru extends MY_Controller {
   public function index()
   {
       $data['pageTitle'] = 'Data Penjual';
-      $data['kelahiran'] = $this->model_users->get()->result();
-      $data['pageContent'] = $this->load->view('penjual/listproduk', $data, TRUE);
+      $data['penjual'] = $this->model_users->get()->result();
+      $data['pageContent'] = $this->load->view('admin/penjual/listpenjual.php', $data, TRUE);
       $this->load->view('template/layout', $data);
   }
 
@@ -47,12 +47,11 @@ class Guru extends MY_Controller {
 				if ($this->form_validation->run() == TRUE) {
 					$data = array(
 						'username' => $this->input->post('username'),
+						'password' => password_hash($this->input->post('password'), PASSWORD_DEFAULT),
 						'nama_lengkap' => $this->input->post('namalengkap'),
 						'jenis_kelamin' => $this->input->post('jeniskelamin'),
 						'alamat' => $this->input->post('alamat'),
-						'nama_ayah' => $this->input->post('namaayah'),
-						'nama_ibu' => $this->input->post('namaibu'),
-						'status' => $this->input->post('status'),
+						'notelp' => $this->input->post('notelp'),
 						'date_create' => $created
 					);
 
@@ -63,7 +62,7 @@ class Guru extends MY_Controller {
 
 					$this->session->set_flashdata('message', $message);
 
-					redirect('guru/add', 'refresh');
+					redirect('penjual/add', 'refresh');
 				}
 
 			}
@@ -71,7 +70,7 @@ class Guru extends MY_Controller {
 			// $data['kecamatan'] = $this->model_master->getKecamatan()->result();
 			// $data['kabupaten'] = $this->model_master->getKabupaten()->result();
 			// $data['provinsi'] = $this->model_master->getProvinsi()->result();
-			$data['pageTitle'] = 'Tambah Data Kelahiran';
+			$data['pageTitle'] = 'Tambah Data Penjual';
 	    // $data['pageContent'] = $this->load->view('datakelahiran/daftardatakelahiran.php', $data, TRUE);
 
 	  	$this->load->view('template/layout', $data);
@@ -80,12 +79,11 @@ class Guru extends MY_Controller {
 	public function edit($id = null)
 	{
 		if ($this->input->post('update')) {
-      $this->form_validation->set_rules('','','required');
-			$this->form_validation->set_rules('','','required');
-			$this->form_validation->set_rules('','','required');
+			$this->form_validation->set_rules('username','Username','required');
+			$this->form_validation->set_rules('namalengkap','Nama Lengkap','required');
+			$this->form_validation->set_rules('alamat','Alamat','required');
 			$this->form_validation->set_rules('jeniskelamin','Jenis Kelamin','required|in_list[L,P]');
-			$this->form_validation->set_rules('','','required');
-			$this->form_validation->set_rules('','','required');
+			$this->form_validation->set_rules('notelp','Nomor Telepon','required');
 			$this->form_validation->set_rules('','','required');
 			$this->form_validation->set_rules('','','required');
 			$this->form_validation->set_rules('','','required');
@@ -101,14 +99,12 @@ class Guru extends MY_Controller {
 					if ($this->form_validation->run() === TRUE) {
 
 						$data = array(
-              'nip' => $this->input->post('nip'),
-  						'nama_lengkap' => $this->input->post('namalengkap'),
-  						'jenis_kelamin' => $this->input->post('jeniskelamin'),
-  						'alamat' => $this->input->post('alamat'),
-  						'nama_ayah' => $this->input->post('namaayah'),
-  						'nama_ibu' => $this->input->post('namaibu'),
-  						'status' => $this->input->post('status'),
-  						'date_create' => $created
+							'username' => $this->input->post('username'),
+							'nama_lengkap' => $this->input->post('namalengkap'),
+							'jenis_kelamin' => $this->input->post('jeniskelamin'),
+							'alamat' => $this->input->post('alamat'),
+							'notelp' => $this->input->post('notelp'),
+							'date_create' => $created
 						);
 
 						$id = $this->input->post('id');
@@ -122,7 +118,7 @@ class Guru extends MY_Controller {
 				}
 
 				$this->session->set_flashdata('message', $message);
-				redirect('datakelahiran/edit/'. $id, 'refresh');
+				redirect('penjual/edit/'. $id, 'refresh');
 
 					}
 		}
@@ -137,16 +133,16 @@ class Guru extends MY_Controller {
 		if (!$kelahiran) show_404();
 
 		$data['pageTitle'] = 'Edit Data Kelahiran';
-    $data['guru'] = $guru;
-		$data['pageContent'] = $this->load->view('datakelahiran/datakelahiranedit', $data, TRUE);
+    $data['penjual'] = $penjual;
+		$data['pageContent'] = $this->load->view('admin/penjual/penjualedit', $data, TRUE);
 		$this->load->view('template/layout', $data);
 }
 
 public function delete($id)
 {
-	$guruId = $this->model_users->get_where(array('id' => $id))->row();
+	$penjualId = $this->model_users->get_where(array('id' => $id))->row();
 
-	if (!$guruId) show_404();
+	if (!$penjualId) show_404();
 
 	$query = $this->model_users->delete($id);
 
@@ -155,7 +151,7 @@ public function delete($id)
 
 		$this->session->set_flashdata('message', $message);
 
-		redirect('guru', 'refresh');
+		redirect('penjual', 'refresh');
 
 }
 }

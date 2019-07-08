@@ -86,7 +86,7 @@ class Users extends MY_Controller {
 
     // Data untuk page users/add
     $data['pageTitle'] = 'Tambah Data User';
-    $data['pageContent'] = $this->load->view('users/userAdd', $data, TRUE);
+    $data['pageContent'] = $this->load->view('users/useradd', $data, TRUE);
 
     // Jalankan view template/layout
     $this->load->view('template/layout', $data);
