@@ -48,6 +48,17 @@
       // Return hasil query
       return $query;
     }
+    public function getAdmin(){
+      $this->db->where('level','administrator');
+      $query = $this->db->get($this->table);
+      return $query;
+    }
+
+     public function getPenjual(){
+     $this->db->where('level','penjual');
+      $query = $this->db->get($this->table);
+      return $query;
+    }
 
     public function insert($data)
     {

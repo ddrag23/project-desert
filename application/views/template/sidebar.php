@@ -20,7 +20,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="<?= base_url('dashboardadmin'); ?>">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
     </li>
@@ -30,7 +30,7 @@
         <span>list admin</span></a>
     </li>
     <li class="nav-item active">
-      <a class="nav-link" href="index.html">
+      <a class="nav-link" href="<?php echo base_url('produk'); ?>">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>list produk</span></a>
     </li>
@@ -44,12 +44,12 @@
     <!-- Divider -->
     <?php if ($this->session->userdata('level') == "penjual"): ?>
       <li class="nav-item active">
-        <a class="nav-link" href="index.html">
+        <a class="nav-link" href="<?php echo base_url('profile'); ?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Profile</span></a>
       </li>
       <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url('penjual/index/'); ?>">
+        <a class="nav-link" href="<?php echo base_url('produk'); ?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>List Produk</span></a>
       </li>
