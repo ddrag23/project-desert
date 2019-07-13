@@ -3,10 +3,13 @@
 class Model_barang extends CI_Model
 {
   public $table = 'produks';
-  public function get(){
 
-    	$query = $this->db->get($this->table);
-    	return $query;
+  public function get(){
+      $this->db->select('produks.*,users.username,notelp,alamat,nama_lengkap,pasfoto,email');
+      $this->db->from('produks');
+      $this->db->join('users', 'users.id = produks.users_id');
+      $query = $this->db->get();
+      return $query;
   }
   public function get_where($where)
   {
@@ -23,22 +26,22 @@ class Model_barang extends CI_Model
 		return $query;
 	}
 
-	public function update($id, $data)
+	public function update($id_produk, $data)
   {
       // Jalankan query
       $query = $this->db
-        ->where('id', $id)
+        ->where('id_produk', $id_produk)
         ->update($this->table, $data);
 
       // Return hasil query
       return $query;
   }
 
-  public function delete($id)
+  public function delete($id_produk)
   {
       // Jalankan query
       $query = $this->db
-        ->where('id', $id)
+        ->where('id_produk', $id_produk)
         ->delete($this->table);
 
       // Return hasil query

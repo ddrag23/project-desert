@@ -196,12 +196,24 @@
 
           <!-- Nav Item - User Information -->
           <?php if (!empty($this->session->userdata('username'))): ?>
-            <a href="<?php echo base_url('auth/logout'); ?>" class="btn btn-primary btn-icon-split" style="    margin-top: 15px; height: 38px;width: 6em;">
-              <span class="icon text-white-50">
-                <i class="fas fa-user"></i>
-              </span>
-              <span class="text">Logout</span>
-            </a>
+            <li class="nav-item dropdown no-arrow">
+              <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $this->session->userdata('username'); ?></span>
+                <img class="img-profile rounded-circle" src="<?php echo base_url(); ?>uploads/<?php echo 'dir_' . $this->session->userdata('username') . '/' . $this->session->userdata('pasfoto'); ?>">
+              </a>
+              <!-- Dropdown - User Information -->
+              <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+                <a class="dropdown-item" href="<?php echo base_url('profile'); ?>">
+                  <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Profile
+                </a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="<?= base_url('auth/logout'); ?>" >
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Logout
+                </a>
+              </div>
+            </li>
           <?php else: ?>
             <a href="<?php echo base_url('auth/login'); ?>" class="btn btn-primary btn-icon-split" style="    margin-top: 15px; height: 38px;width: 6em;">
               <span class="icon text-white-50">
