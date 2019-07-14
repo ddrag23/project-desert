@@ -1,7 +1,8 @@
-<link rel="stylesheet" href="<?php echo base_url('assets/css/style.css'); ?>"> 
+<link rel="stylesheet" href="<?php echo base_url('assets/css/style.css'); ?>">
 <section class="content container-fluid">
   <div class="card shadow mb-4">
       <div class="card-body">
+        <?php echo form_hidden('id_produk', $barang->id_produk);?>
         <div class="right-layout">
           <img src="<?php echo base_url().'/uploads/'.$barang->gambar; ?>" class="img-fluid" alt="Responsive image">
           <div class="deskripsi-content">
@@ -13,9 +14,8 @@
             <img src="...." alt="">
           </div>
           <div class="deks-seller">
-            <h3>username</h3>
-            <p>alamate</p>
-            <p>nmer wae</p>
+            <h3 <?php  $barang->users_id; ?>><?php  $this->db->where('id', $barang->users_id);$k = $this->db->get('users')->row();print_r($k->username);?></h3>
+            <p <?php $barang->users_id; ?>><?php  $this->db->where('id', $barang->users_id);$k = $this->db->get('users')->row();print_r($k->alamat); ?></p>
           </div>
         </div>
       </div>

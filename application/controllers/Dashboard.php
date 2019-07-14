@@ -18,8 +18,9 @@ class Dashboard extends MY_Controller
     $this->load->view('template/layout', $data);
 
   }
-  public function page(){
-    $data['barang'] = $this->Model_barang->get()->row();
+  public function page($id_produk = null){
+    $barang = $this->Model_barang->get_where(array('id_produk' => $id_produk))->row();
+    $data['barang'] = $barang;
     $data['penjual'] = $this->model_users->getPenjual()->row();
     $data['pageTitle'] = 'isi';
     $data['pageContent'] = $this->load->view('dashboard/pageDesk', $data, TRUE);
