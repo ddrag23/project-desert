@@ -16,6 +16,7 @@
           <div class="deks-seller">
             <h3 <?php  $barang->users_id; ?>><?php  $this->db->where('id', $barang->users_id);$k = $this->db->get('users')->row();print_r($k->username);?></h3>
             <p <?php $barang->users_id; ?>><?php  $this->db->where('id', $barang->users_id);$k = $this->db->get('users')->row();print_r($k->alamat); ?></p>
+            <a href="https://api.whatsapp.com/send?phone=<?php $barang->users_id; $this->db->where('id', $barang->users_id);$k = $this->db->get('users')->row();print_r($k->notelp); ?>">whatsapp</a>
           </div>
         </div>
       </div>

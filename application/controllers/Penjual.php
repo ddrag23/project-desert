@@ -87,12 +87,7 @@ class Penjual extends MY_Controller {
 			$this->form_validation->set_rules('jeniskelamin','Jenis Kelamin','required|in_list[L,P]');
 			$this->form_validation->set_rules('notelp','Nomor Telepon','required');
 			$this->form_validation->set_rules('email','Email','required');
-			$this->form_validation->set_rules('','','required');
-			$this->form_validation->set_rules('','','required');
-			$this->form_validation->set_rules('','','required');
-			$this->form_validation->set_rules('','','required');
-      $this->form_validation->set_rules('','','required');
-      $this->form_validation->set_rules('','','required');
+			
 
 			$created = date('YmdHis');
 			$this->form_validation->set_message('required', '%s tidak boleh kosong!');
@@ -124,7 +119,7 @@ class Penjual extends MY_Controller {
 				}
 
 				$this->session->set_flashdata('message', $message);
-				redirect('penjual/edit/'. $id, 'refresh');
+				redirect('penjual/edit/'. $id_produk, 'refresh');
 
 					}
 		}

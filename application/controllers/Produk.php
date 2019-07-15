@@ -58,19 +58,6 @@ class Produk extends MY_Controller {
 
 				$created = date('YmdHis');
 
-				// $gambar = $_FILES['gambar']['name'];
-				// if ($gambar = '') {}else {
-				// 	$config ['upload_path'] = './uploads';
-				// 	$config ['allowed_type'] = 'jpg|jpeg|png|gif';
-				// 	$config['remove_spaces']=TRUE;
-				// 	$config['overwrite']=TRUE;
-				// 	$this->load->library('upload',$config);
-				// 	if (!$this->upload->do_upload('file')) {
-				// 		exit($this->upload->display_error());
-				// 	}else {
-				// 		$gambar = $this->upload->data('file_name');
-				// 	}
-				// }
 
 				$this->form_validation->set_message('required', '%s tidak boleh kosong!');
 	      		// $this->form_validation->set_message('min_length', '{field} minimal {param} karakter.');
@@ -105,7 +92,7 @@ class Produk extends MY_Controller {
 			// $data['kecamatan'] = $this->model_master->getKecamatan()->result();
 			// $data['kabupaten'] = $this->model_master->getKabupaten()->result();
 			// $data['provinsi'] = $this->model_master->getProvinsi()->result();
-			$data['pageTitle'] = 'Tambah Data Penjual';
+			$data['pageTitle'] = 'Tambah Data Barang';
 			$data['produk'] = $this->model_barang->get()->result();
 
 	    $data['pageContent'] = $this->load->view('produks/listproduk', $data, TRUE);
@@ -115,25 +102,29 @@ class Produk extends MY_Controller {
 
 	public function edit($id_produk = null)
 	{
+		$data['gambar'] = '';
+
 		if ($this->input->post('update')) {
 
 			if (!empty($_FILES['gambar']['name'])) {
 
-				// Konfigurasi library upload codeigniter
-				$config['upload_path'] = './uploads';
-				$config['allowed_types'] = 'gif|jpg|png|jpeg';
-				$config['file_name'] = 'gambar';
+        // Konfigurasi library upload codeigniter
+        $config['upload_path'] = './uploads';
+        $config['allowed_types'] = 'gif|jpg|png|jpeg';
+        $config['file_name'] = 'gambar';
 
-				// Load library upload
-				$this->load->library('upload', $config);
+        // Load library upload
+        $this->load->library('upload', $config);
 
-				// Jika terdapat error pada proses upload maka exit
-				if (!$this->upload->do_upload('gambar')) {
-						exit($this->upload->display_errors());
-				}
+        // Jika terdapat error pada proses upload maka exit
+        if (!$this->upload->do_upload('gambar')) {
+            exit($this->upload->display_errors());
+        }
 
-				$data['gambar'] = $this->upload->data()['file_name'];
-			}
+        $data['gambar'] = $this->upload->data()['file_name'];
+      }
+			// echo json_encode($data['gambar']);
+			// die();
 
 			$this->form_validation->set_rules('nama','Nama','required');
 			$this->form_validation->set_rules('kategori','Kategori','required');
@@ -150,6 +141,7 @@ class Produk extends MY_Controller {
 					if ($this->form_validation->run() === TRUE) {
 
 						$data = array(
+							'users_id' => $this->session->userdata('id'),
 							'nama' => $this->input->post('nama'),
 							'kategori' => $this->input->post('kategori'),
 							'harga' => $this->input->post('harga'),
@@ -158,9 +150,9 @@ class Produk extends MY_Controller {
 							'date_create' => $created
 						);
 
-						$id_produk = $this->input->post('id_produk');
+						// $id_produk = $this->input->post('id_produk');
 
-						$query = $this->model_barang->update($id_produk, $data);
+						// $query = $this->model_barang->update($id_produk, $data);
 
 						if ($query) {
 							$message = array('status' => true, 'message' => 'Berhasil memperbarui data');
@@ -185,7 +177,7 @@ class Produk extends MY_Controller {
 
 		$data['pageTitle'] = 'Edit Data Produk';
     $data['barang'] = $barang;
-		$data['pageContent'] = $this->load->view('produk/editproduk', $data, TRUE);
+		$data['pageContent'] = $this->load->view('produks/editproduk', $data, TRUE);
 		$this->load->view('template/layout', $data);
 }
 

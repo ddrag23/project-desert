@@ -5,12 +5,13 @@ class Model_barang extends CI_Model
   public $table = 'produks';
 
   public function get(){
-      $this->db->select('produks.*,users.username,notelp,alamat,nama_lengkap,pasfoto,email');
+      $this->db->select('produks.*,users.username,notelp,alamat,nama_lengkap,pasfoto,email,level');
       $this->db->from('produks');
       $this->db->join('users', 'users.id = produks.users_id');
       $query = $this->db->get();
       return $query;
   }
+
   public function get_where($where)
   {
       // Jalankan query
