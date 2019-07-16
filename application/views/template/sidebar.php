@@ -7,12 +7,23 @@
   <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
     <!-- Sidebar - Brand -->
-    <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-      <div class="sidebar-brand-icon ">
-        <i class="fas fa-store"></i>
-      </div>
-      <div class="sidebar-brand-text mx-3">TOKO ONLINE</div>
-    </a>
+    <?php if ($this->session->userdata('level') == 'administrator'): ?>
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('dashboardadmin'); ?>">
+        <div class="sidebar-brand-icon ">
+          <i class="fas fa-store"></i>
+        </div>
+          <div class="sidebar-brand-text mx-3">TOKO ONLINE</div>
+      </a>
+    <?php endif; ?>
+    <?php if ($this->session->userdata('level') == 'penjual'): ?>
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('penjual/dashboard'); ?>">
+        <div class="sidebar-brand-icon ">
+          <i class="fas fa-store"></i>
+        </div>
+          <div class="sidebar-brand-text mx-3">TOKO ONLINE</div>
+      </a>
+    <?php endif; ?>
+
 
     <!-- Divider -->
     <?php if ($this->session->userdata('level') == "administrator"): ?>
@@ -44,9 +55,9 @@
     <!-- Divider -->
     <?php if ($this->session->userdata('level') == "penjual"): ?>
       <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url('profile'); ?>">
+        <a class="nav-link" href="<?php echo base_url('penjual/dashboard'); ?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
-          <span>Profile</span></a>
+          <span>Dashboard</span></a>
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="<?php echo base_url('produk'); ?>">

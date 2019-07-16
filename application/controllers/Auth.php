@@ -82,4 +82,79 @@ class Auth extends CI_Controller
     // redirect ke halaman login
     redirect('auth/login');
   }
+  public function forgot()
+ {
+   if ($this->input->post('submit')) {
+
+     $this->form_validation->set_rules('email', 'Email', 'required');
+       $this->form_validation->set_message('required', '%s tidak boleh kosong!');
+
+       if ($this->form_validation->run() === TRUE) {
+
+         $cekemail = $this->model_users->get_whereUsers(array('email' => $this->input->post('email') ))->row();
+
+         if (!$cekemail) {
+           $message = array('error' => true, 'error' => 'Email anda belum terdaftar');
+         $this->session->set_flashdata('error', $message);
+         } else {
+           $resetpassword = uniqid();
+
+         //print_r($cekemail);
+               $id_user = $cekemail->id_user;
+               $user = $cekemail->username;
+
+             $data = array(
+                 'password' => password_hash($resetpassword, PASSWORD_DEFAULT),
+                 'active' => '1',
+                 'verifikasi' => 'verified'
+             );
+
+             $query = $this->model_users->updateUsers($id_user,$data);
+
+             if (!$query) {
+               $message = array('error' => true, 'error' => 'Gagal verifikasi email');
+           $this->session->set_flashdata('error', $message);
+             } else {
+               $from_email = "cyber@unusa.ac.id";
+                 $to_email = $this->input->post('email');
+
+                 //Load email library
+                 $this->load->library('email');
+
+                 $this->email->from($from_email, 'E-Pendaftaran Admin');
+                 $this->email->to($to_email);
+                 $this->email->subject('E-Pendaftaran: Reset Password.');
+                 $this->email->message('
+             Anda telah melakukan reset password untuk aplikasi E-Pendaftaran.
+             Username : '.$user.'
+             Email   : '.$this->input->post('email').'
+             Password: '.$resetpassword.'
+
+             Terima kasih telah menggunakan pelayanan kami.
+
+
+                TTD
+
+             Admin E-Pendaftaran.
+           ');
+
+           if ($this->email->send()) {
+             $message = array('status' => true, 'message' => 'Berhasil reset password, silahkan cek email');
+             $this->session->set_flashdata('message', $message);
+           } else {
+             $message = array('error' => true, 'error' => 'Gagal reset password');
+             $this->session->set_flashdata('error', $message);
+           }
+             }
+
+         }
+
+         redirect('auth/forgot', 'refresh');
+
+       }
+   }
+
+   $data['pageTitle'] = 'Login System';
+   $this->load->view('auth/forgotpass', $data);
+ }
 }

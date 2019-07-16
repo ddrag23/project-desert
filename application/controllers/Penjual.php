@@ -8,6 +8,7 @@ class Penjual extends MY_Controller {
 	    parent::__construct();
 	    $this->cekLogin();
 	    $this->load->model('model_users');
+	    $this->load->model('model_barang');
 			//$this->load->model('model_master');
 			// $this->load->model('model_upload');
 			// $this->load->library('csvreader');
@@ -21,6 +22,13 @@ class Penjual extends MY_Controller {
       $data['pageContent'] = $this->load->view('admin/penjual/listpenjual.php', $data, TRUE);
       $this->load->view('template/layout', $data);
   }
+	public function dashboard(){
+		$data['pageTitle'] = 'Data Penjual';
+		$data['totalProduk'] = $this->model_barang->getBarangPenjual()->num_rows();
+		$data['pageContent'] = $this->load->view('admin/penjual/mainpenjual.php', $data, TRUE);
+		$this->load->view('template/layout', $data);
+
+	}
 
 	public function add(){
 
@@ -31,12 +39,6 @@ class Penjual extends MY_Controller {
 			$this->form_validation->set_rules('jeniskelamin','Jenis Kelamin','required|in_list[L,P]');
 			$this->form_validation->set_rules('notelp','Nomor Telepon','required');
 			$this->form_validation->set_rules('email','Email','required');
-			$this->form_validation->set_rules('','','required');
-			$this->form_validation->set_rules('','','required');
-			$this->form_validation->set_rules('','','required');
-			$this->form_validation->set_rules('','','required');
-      $this->form_validation->set_rules('','','required');
-      $this->form_validation->set_rules('','','required');
 
 				$created = date('YmdHis');
 
@@ -87,7 +89,7 @@ class Penjual extends MY_Controller {
 			$this->form_validation->set_rules('jeniskelamin','Jenis Kelamin','required|in_list[L,P]');
 			$this->form_validation->set_rules('notelp','Nomor Telepon','required');
 			$this->form_validation->set_rules('email','Email','required');
-			
+
 
 			$created = date('YmdHis');
 			$this->form_validation->set_message('required', '%s tidak boleh kosong!');

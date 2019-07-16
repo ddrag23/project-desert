@@ -7,11 +7,14 @@ class Dashboardadmin extends MY_Controller
     parent::__construct();
     $this->cekLogin();
     $this->load->model('Model_users');
+    $this->load->model('Model_barang');
   }
 
   public function index()
   {
-    // $data['barang'] = $this->Model_barang->get()->result();
+    $data['allProduk'] = $this->Model_barang->get()->num_rows();
+    $data['penjual'] = $this->Model_users->getPenjual()->num_rows();
+    $data['admin'] = $this->Model_users->getAdmin()->num_rows();
     $data['pageTitle'] = 'Dashboard';
     $data['pageContent'] = $this->load->view('admin/main.php',  $data, TRUE);
     $this->load->view('template/layout', $data);

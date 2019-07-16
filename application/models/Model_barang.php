@@ -11,7 +11,12 @@ class Model_barang extends CI_Model
       $query = $this->db->get();
       return $query;
   }
-
+  public function getBarangPenjual(){
+    $this->db->select('*');
+    $this->db->from('produks');
+    $this->db->where('users_id',$this->session->userdata('id'));
+    return $this->db->get();
+  }
   public function get_where($where)
   {
       // Jalankan query

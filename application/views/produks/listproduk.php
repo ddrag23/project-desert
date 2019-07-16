@@ -9,6 +9,7 @@
 			<?php endif; ?>
 
 			<!-- DataTales Example -->
+
 			<div class="card shadow mb-4">
 				<div class="card-header py-3">
 					<h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
@@ -29,26 +30,49 @@
 						</tr>
 					</thead>
 					<tbody>
-						<?php $no=0; foreach ($produk as $row): ?>
-						<tr>
-							<td><?php echo ++$no; ?></td>
-							<td><?php echo $row->nama; ?></td>
-							<td><?php echo $row->kategori; ?></td>
-							<td><?php echo $row->harga; ?></td>
-              <td><?php echo $row->gambar; ?></td>
-              <td><?php echo $row->deskripsi; ?></td>
+						<?php if ($this->session->userdata('level') == 'administrator'): ?>
+							<?php $no=0; foreach ($produk as $key): ?>
+							<tr>
+								<td><?php echo ++$no; ?></td>
+								<td><?php echo $key->nama; ?></td>
+								<td><?php echo $key->kategori; ?></td>
+								<td><?php echo $key->harga; ?></td>
+	              <td><?php echo $key->gambar; ?></td>
+	              <td><?php echo $key->deskripsi; ?></td>
 
-							<td>
-								<a href="<?php echo base_url('produk/edit/' . $row->id_produk); ?>"><button class="btn btn-info"><i class="fas fa-edit"></i></button></a>
-								<a href="<?php echo base_url('produk/delete/' . $row->id_produk); ?>"> <button class="btn btn-danger" ><i class="fas fa-trash-alt"></i></button></i></
-							</td>
-						</tr>
-					<?php endforeach; ?>
+								<td>
+									<a href="<?php echo base_url('produk/edit/' . $key->id_produk); ?>"><button class="btn btn-info"><i class="fas fa-edit"></i></button></a>
+									<a href="<?php echo base_url('produk/delete/' . $key->id_produk); ?>"> <button class="btn btn-danger" ><i class="fas fa-trash-alt"></i></button></i></
+								</td>
+							</tr>
+						<?php endforeach; ?>
+
+						<?php endif; ?>
+						<?php if ($this->session->userdata('level') == 'penjual'): ?>
+							<?php $no=0; foreach ($produkPenjual as $row): ?>
+							<tr>
+								<td><?php echo ++$no; ?></td>
+								<td><?php echo $row->nama; ?></td>
+								<td><?php echo $row->kategori; ?></td>
+								<td><?php echo $row->harga; ?></td>
+	              <td><?php echo $row->gambar; ?></td>
+	              <td><?php echo $row->deskripsi; ?></td>
+
+								<td>
+									<a href="<?php echo base_url('produk/edit/' . $row->id_produk); ?>"><button class="btn btn-info"><i class="fas fa-edit"></i></button></a>
+									<a href="<?php echo base_url('produk/delete/' . $row->id_produk); ?>"> <button class="btn btn-danger" ><i class="fas fa-trash-alt"></i></button></i></
+								</td>
+							</tr>
+						<?php endforeach; ?>
+						<?php endif; ?>
+
 					</tbody>
 				</table>
+
 			</div>
 		</div>
 	</div>
+
 </section>
 <div class="modal fade" id="tambah_penjual" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">

@@ -18,6 +18,7 @@ class Produk extends MY_Controller {
   {
       $data['pageTitle'] = 'Data Barang';
       $data['produk'] = $this->model_barang->get()->result();
+      $data['produkPenjual'] = $this->model_barang->getBarangPenjual()->result();
       $data['pageContent'] = $this->load->view('produks/listproduk', $data, TRUE);
       $this->load->view('template/layout', $data);
 			// echo json_encode($this->model_barang->get()->result());
@@ -123,8 +124,8 @@ class Produk extends MY_Controller {
 
         $data['gambar'] = $this->upload->data()['file_name'];
       }
-			// echo json_encode($data['gambar']);
-			// die();
+			echo json_encode(	);
+			die();
 
 			$this->form_validation->set_rules('nama','Nama','required');
 			$this->form_validation->set_rules('kategori','Kategori','required');
