@@ -150,30 +150,6 @@
           </li>
           <li class="nav-item no-arrow mx-1">
             <!-- Topbar Search -->
-            <?php if ($this->session->userdata('level') == 'administrator'): ?>
-              <form method="get" action="<?= base_url(''); ?>" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                <div class="input-group mt-3">
-                  <input type="text" name = "keyword" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                  <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit" >
-                      <i class="fas fa-search fa-sm"></i>
-                    </button>
-                  </div>
-                </form>
-                </div>
-            <?php endif; ?>
-            <?php if ($this->session->userdata('level') == 'penjual'): ?>
-              <form method="get" action="<?= base_url(''); ?>" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                <div class="input-group mt-3">
-                  <input type="text" name = "keyword" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2">
-                  <div class="input-group-append">
-                    <button class="btn btn-primary" type="submit" >
-                      <i class="fas fa-search fa-sm"></i>
-                    </button>
-                  </div>
-                </div>
-              </form>
-            <?php endif; ?>
             <?php if (empty($this->session->userdata('username'))): ?>
               <form method="get" action="<?= base_url(''); ?>" class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
                 <div class="input-group">
