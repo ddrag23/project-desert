@@ -4,7 +4,7 @@
 
 	  <div class="card shadow mb-4">
 	    <div class="card-header py-3">
-	      <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+	      <h6 class="m-0 font-weight-bold text-primary">Edit Profile</h6>
 	    </div>
 	    <div class="card-body">
 				<div class="">
@@ -13,12 +13,12 @@
 					<?php endif ?>
 					<?php if ($this->session->userdata('pasfoto') != null): ?>
 						<div class="img">
-							<img src="<?php echo base_url(); ?>uploads/<?php echo 'dir_' . $this->session->userdata('username') . '/' . $this->session->userdata('pasfoto'); ?>" alt="photo" class="thumbnail img-responsive img-square" style="margin-right:auto; height: 160px; width: 160px; margin-left: auto;display: block; margin-top: 25px;">
+							<img src="<?php echo base_url(); ?>uploads/<?php echo 'dir_' . $this->session->userdata('username') . '/' . $this->session->userdata('pasfoto'); ?>" alt="photo" class="thumbnail img-responsive rounded mb-3" style="margin-right:auto; height: 160px; width: 160px; margin-left: auto;display: block; ">
 						</div>
 					<?php endif ?>
 				</div>
-	            <form class="form-horizontal" method="post" enctype="multipart/form-data">
-	            	<?php if(validation_errors()): ?>
+	      <form class="form-horizontal" method="post" enctype="multipart/form-data">
+	        <?php if(validation_errors()): ?>
 					<div class="alert alert-danger" role="alert"><?php echo validation_errors('<p>', '</p>'); ?></div>
 					<?php endif; ?>
 					<?php if($message = $this->session->flashdata('message')): ?>
@@ -48,7 +48,7 @@
 			                	<input type="file" class="form-control" id="avatar" name="avatar">
 			                </div>
 			                <div class="form-group" align="center" style="padding: 20px;">
-		                		<input type="submit" class=" btn btn-info" id="save" name="simpan" value="Simpan">
+		                		<input type="submit" class=" btn btn-primary" id="save" name="simpan" value="Simpan">
 			                </div>
 		                </div>
 		            </div>
