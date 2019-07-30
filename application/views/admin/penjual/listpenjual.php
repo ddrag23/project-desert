@@ -68,12 +68,10 @@
 	<?php endif; ?>
 <form class="" action="<?php echo base_url('penjual/add'); ?>" method="post" enctype="multipart/form-data">
 	<div class="form-row mb-2">
-		<div class="col">
+		<div class="col-12">
 			<input id="username" class="form-control" name="username" type="text" placeholder="Username">
 		</div>
-		<div class="col">
-			<input id="password" class="form-control" name="password" type="password" placeholder="Password">
-		</div>
+
 	</div>
 	<div class="form-row mb-2">
 		<div class="col">

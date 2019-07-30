@@ -9,7 +9,7 @@
 	    <div class="card-body">
 				<div class="">
 					<?php if ($this->session->userdata('pasfoto') == null): ?>
-						<img src="<?php echo base_url(); ?>assets/img/avatar04.png" alt="photo" class="thumbnail img-responsive" style="margin-right: auto;margin-left: auto;display: block; margin-top: 25px;">
+						<img src="<?php echo base_url(); ?>uploads/defaultAvatar.png" alt="photo" class="thumbnail img-responsive" style="margin-right: auto;margin-left: auto;display: block; margin-top: 25px;">
 					<?php endif ?>
 					<?php if ($this->session->userdata('pasfoto') != null): ?>
 						<div class="img">

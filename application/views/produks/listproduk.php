@@ -22,6 +22,7 @@
 						<tr>
 							<th>No</th>
               <th>Nama Barang</th>
+              <th>Nama Penjual</th>
 							<th>Kategori</th>
               <th>Harga</th>
 							<th>Gambar</th>
@@ -35,6 +36,7 @@
 							<tr>
 								<td><?php echo ++$no; ?></td>
 								<td><?php echo $key->nama; ?></td>
+								<td><?php echo $key->username; ?></td>
 								<td><?php echo $key->kategori; ?></td>
 								<td><?php echo $key->harga; ?></td>
 	              <td><?php echo $key->gambar; ?></td>

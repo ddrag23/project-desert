@@ -68,7 +68,7 @@
                 <option <?php echo ($user->active === '1') ? 'selected' : ''; ?> value="1">Aktif</option>
               </select>
             </div>
-            <input type="submit" name="update" value="Simpan" class="btn btn-primary">
+            <input type="submit" name="update" value="Simpan" class="btn btn-primary mt-3">
         <!-- end form isi  -->
       </form>
     </div>

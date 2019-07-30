@@ -1,11 +1,10 @@
-<?php $this->db->select('*');
-$this->db->from('produks');
-$this->db->join('users','users.id = produks.users_id','left');
-$query = $this->db->get()->result(); ?>
+  <?php if (empty($this->session->userdata('username'))): ?>
+<section class="container">
+
 <div class="row text-center">
-  <?php foreach ($query as $brg) : ?>
-<div class="card ml-3" style="width: 16rem;">
-  <img class="card-img-top" src="<?php echo base_url().'/uploads/'.$brg->gambar; ?>" alt="Card image cap">
+  <?php foreach ($barang as $brg) : ?>
+<div class="card ml-3 mb-3" style="width: 16rem;">
+  <img class="card-img-top" src="<?php echo base_url().'/uploads/'.$brg->gambar; ?>" alt="Card image cap" style="overflow:hidden; height:10em;">
   <div class="card-body">
     <h5 class="card-title mb-2"><?= $brg->nama; ?></h5>
     <small ><?= $brg->deskripsi ?></small><br>
@@ -15,3 +14,6 @@ $query = $this->db->get()->result(); ?>
 <?php endforeach; ?>
 
 </div>
+
+</section>
+<?php endif; ?>

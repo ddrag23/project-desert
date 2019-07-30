@@ -4,7 +4,7 @@
       <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
     </div>
     <div class="card-body">
-      <form class="" action="" method="post">
+      <form class="" action="" method="post" enctype="multipart/form-data">
         <!-- pemberitahuan -->
 				<?php if(validation_errors()): ?>
 					<div class="alert alert-danger" role="alert"><?php echo validation_errors('<p>', '</p>'); ?></div>
@@ -36,7 +36,7 @@
           		<input id="gambar" class="form-control" name="gambar" type="file" >
           	</div>
 
-            <input type="submit" name="update" value="Simpan" class="btn btn-primary">
+            <input type="submit" name="update" value="Simpan" class="btn btn-primary mt-3">
         <!-- end form isi  -->
       </form>
     </div>

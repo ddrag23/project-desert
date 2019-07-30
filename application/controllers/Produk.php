@@ -124,8 +124,8 @@ class Produk extends MY_Controller {
 
         $data['gambar'] = $this->upload->data()['file_name'];
       }
-			echo json_encode(	);
-			die();
+			// echo json_encode($data['gambar']);
+			// die();
 
 			$this->form_validation->set_rules('nama','Nama','required');
 			$this->form_validation->set_rules('kategori','Kategori','required');
@@ -151,9 +151,9 @@ class Produk extends MY_Controller {
 							'date_create' => $created
 						);
 
-						// $id_produk = $this->input->post('id_produk');
+						$id_produk = $this->input->post('id_produk');
 
-						// $query = $this->model_barang->update($id_produk, $data);
+						$query = $this->model_barang->update($id_produk, $data);
 
 						if ($query) {
 							$message = array('status' => true, 'message' => 'Berhasil memperbarui data');
@@ -197,5 +197,8 @@ public function delete($id_produk)
 
 		redirect('produk', 'refresh');
 
+}
+public function search(){
+	$keyword = $this->input->post('keyword');
 }
 }

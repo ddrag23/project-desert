@@ -20,6 +20,10 @@
               <input id="username" class="form-control" type="text" name="username" value="<?php echo $penjual->username; ?>">
             </div>
             <div class="for-group">
+              <label for="password">Password</label>
+              <input id="password" class="form-control" type="text" name="password">
+            </div>
+            <div class="for-group">
               <label for="namalengkap">Nama Lengkap</label>
               <input id="namalengkap" class="form-control" type="text" name="namalengkap" value="<?php echo $penjual->nama_lengkap; ?>">
             </div>
@@ -42,7 +46,7 @@
                 <option value="P" <?php if($penjual->jenis_kelamin == "P") echo "selected"; ?> >perempuan</option>
               </select>
             </div>
-            <input type="submit" name="update" value="Simpan" class="btn btn-primary">
+              <input type="submit" name="update" value="Simpan" class="btn btn-primary mt-3">
         <!-- end form isi  -->
       </form>
     </div>

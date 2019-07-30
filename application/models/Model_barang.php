@@ -17,10 +17,19 @@ class Model_barang extends CI_Model
     $this->db->where('users_id',$this->session->userdata('id'));
     return $this->db->get();
   }
+  public function search($keyword){
+    $this->db->select('*');
+    $this->db->from('produks');
+    $this->db->join('users', 'users.id = produks.users_id');
+    $this->db->like('nama',$keyword);
+    $this->db->or_like('harga',$keyword);
+    $this->db->or_like('username',$keyword);
+    return $this->db->get()->result();
+  }
   public function get_where($where)
   {
       // Jalankan query
-      $query = $this->db
+      $query = $this->db->join('users', 'users.id = produks.users_id')
         ->where($where)
         ->get($this->table);
 

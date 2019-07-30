@@ -33,7 +33,7 @@ class Penjual extends MY_Controller {
 	public function add(){
 
 		if ($this->input->post('submit')) {
-      $this->form_validation->set_rules('username','Username','required');
+      $this->form_validation->set_rules('username','Username','required|min_length[5]|is_unique[users.username]');
 			$this->form_validation->set_rules('namalengkap','Nama Lengkap','required');
 			$this->form_validation->set_rules('alamat','Alamat','required');
 			$this->form_validation->set_rules('jeniskelamin','Jenis Kelamin','required|in_list[L,P]');
@@ -66,7 +66,7 @@ class Penjual extends MY_Controller {
 
 					$this->session->set_flashdata('message', $message);
 
-					redirect('penjual/add', 'refresh');
+					redirect('penjual', 'refresh');
 				}
 
 			}
@@ -75,7 +75,7 @@ class Penjual extends MY_Controller {
 			// $data['kabupaten'] = $this->model_master->getKabupaten()->result();
 			// $data['provinsi'] = $this->model_master->getProvinsi()->result();
 			$data['pageTitle'] = 'Tambah Data Penjual';
-	    $data['pageContent'] = $this->load->view('penjual/daftarpenjual', $data, TRUE);
+	    $data['pageContent'] = $this->load->view('penjual/listpenjual', $data, TRUE);
 
 	  	$this->load->view('template/layout', $data);
   }
@@ -84,6 +84,7 @@ class Penjual extends MY_Controller {
 	{
 		if ($this->input->post('update')) {
 			$this->form_validation->set_rules('username','Username','required');
+			// $this->form_validation->set_rules('password', 'Password', 'required|min_length[5]');
 			$this->form_validation->set_rules('namalengkap','Nama Lengkap','required');
 			$this->form_validation->set_rules('alamat','Alamat','required');
 			$this->form_validation->set_rules('jeniskelamin','Jenis Kelamin','required|in_list[L,P]');
@@ -121,7 +122,8 @@ class Penjual extends MY_Controller {
 				}
 
 				$this->session->set_flashdata('message', $message);
-				redirect('penjual/edit/'. $id_produk, 'refresh');
+				redirect('penjual/edit/'. $id, 'refresh');
+
 
 					}
 		}
