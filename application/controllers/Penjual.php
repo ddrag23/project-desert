@@ -22,13 +22,6 @@ class Penjual extends MY_Controller {
       $data['pageContent'] = $this->load->view('admin/penjual/listpenjual.php', $data, TRUE);
       $this->load->view('template/layout', $data);
   }
-	public function dashboard(){
-		$data['pageTitle'] = 'Data Penjual';
-		$data['totalProduk'] = $this->model_barang->getBarangPenjual()->num_rows();
-		$data['pageContent'] = $this->load->view('admin/penjual/mainpenjual.php', $data, TRUE);
-		$this->load->view('template/layout', $data);
-
-	}
 
 	public function add(){
 

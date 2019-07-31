@@ -33,7 +33,7 @@
             </div>
             <div class="for-group">
               <label for="alamat">Alamat</label>
-              <input id="alamat" class="form-control" type="text" name="alamat" value="<?php echo $penjual->alamat; ?>">
+              <textarea id="alamat" class="form-control" type="text" name="alamat"><?= $penjual->alamat; ?></textarea>
             </div>
             <div class="for-group">
               <label for="notelp">No Telepon</label>

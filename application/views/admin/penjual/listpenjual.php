@@ -22,6 +22,7 @@
 							<th>No</th>
               <th>Username</th>
 							<th>Nama Lengkap</th>
+							<th>Email</th>
               <th>Jenis Kelamin</th>
 							<th>Alamat</th>
 							<th>No Telepon</th>
@@ -34,6 +35,7 @@
 							<td><?php echo ++$no; ?></td>
 							<td><?php echo $row->username; ?></td>
 							<td><?php echo $row->nama_lengkap; ?></td>
+							<td><?php echo $row->email; ?></td>
 							<td><?php echo $row->jenis_kelamin; ?></td>
               <td><?php echo $row->alamat; ?></td>
               <td><?php echo $row->notelp; ?></td>
@@ -93,7 +95,7 @@
 		</div>
 	</div>
 	<div class="form-group">
-		<input id="alamat" class="form-control" name="alamat" type="text" placeholder="Alamat">
+		<textarea id="alamat" class="form-control" name="alamat" type="text" placeholder="Alamat"></textarea>
 	</div>
 <div class="modal-footer">
 	<button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>

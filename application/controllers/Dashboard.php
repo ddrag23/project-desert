@@ -5,7 +5,9 @@ class Dashboard extends MY_Controller
   public function __construct()
   {
     parent::__construct();
-    // $this->cekLogin();
+    if (!empty($this->session->userdata('username'))) {
+      $this->cekLogin();
+    }
     $this->load->model('Model_barang');
     $this->load->model('model_users');
   }
@@ -18,22 +20,23 @@ class Dashboard extends MY_Controller
       $data['pageTitle'] = 'Dashboard';
       $data['pageContent'] = $this->load->view('dashboard/main.php',  $data, TRUE);
       $this->load->view('template/layout', $data);
-    } elseif($this->session->userdata('level')=='admin'){
+    } elseif($this->session->userdata('level')=='administrator'){
       $data['allProduk'] = $this->Model_barang->get()->num_rows();
       $data['penjual'] = $this->model_users->getPenjual()->num_rows();
       $data['admin'] = $this->model_users->getAdmin()->num_rows();
       $data['pageTitle'] = 'Dashboard';
       $data['pageContent'] = $this->load->view('admin/main.php',  $data, TRUE);
       $this->load->view('template/layout', $data);
-    }else{
-      $data['pageTitle'] = 'Data Penjual';
-  		$data['totalProduk'] = $this->Model_barang->getBarangPenjual()->num_rows();
-  		$data['pageContent'] = $this->load->view('admin/penjual/mainpenjual.php', $data, TRUE);
-  		$this->load->view('template/layout', $data);
     }
-
-
+    elseif ($this->session->userdata('level') == 'penjual') {
+      // code...
+      $data['pageTitle'] = 'Data Penjual';
+      $data['totalProduk'] = $this->Model_barang->getBarangPenjual()->num_rows();
+      $data['pageContent'] = $this->load->view('admin/penjual/mainpenjual.php', $data, TRUE);
+      $this->load->view('template/layout', $data);
+  }
 }
+
   public function page($id_produk = null){
     $barang = $this->Model_barang->get_where(array('id_produk' => $id_produk))->row();
     $data['barang'] = $barang;

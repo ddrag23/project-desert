@@ -8,19 +8,19 @@
 
     <!-- Sidebar - Brand -->
     <?php if ($this->session->userdata('level') == 'administrator'): ?>
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('dashboardadmin'); ?>">
-        <div class="sidebar-brand-icon ">
-          <i class="fas fa-store"></i>
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('dashboard'); ?>">
+        <div class="sidebar-brand-icon" >
+          <i class="fas fa-store" style="font-size:40px;"></i>
         </div>
-          <div class="sidebar-brand-text mx-3">TOKO ONLINE</div>
+          <div class="sidebar-brand-text mx-3">keboguyang mart</div>
       </a>
     <?php endif; ?>
     <?php if ($this->session->userdata('level') == 'penjual'): ?>
-      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('penjual/dashboard'); ?>">
+      <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= base_url('dashboard'); ?>">
         <div class="sidebar-brand-icon ">
-          <i class="fas fa-store"></i>
+          <i class="fas fa-store" style="font-size:40px;"></i>
         </div>
-          <div class="sidebar-brand-text mx-3">TOKO ONLINE</div>
+          <div class="sidebar-brand-text mx-3">keboguyang mart</div>
       </a>
     <?php endif; ?>
 
@@ -31,7 +31,7 @@
 
     <!-- Nav Item - Dashboard -->
     <li class="nav-item active">
-      <a class="nav-link" href="<?= base_url('dashboardadmin'); ?>">
+      <a class="nav-link" href="<?= base_url('dashboard'); ?>">
         <i class="fas fa-fw fa-tachometer-alt"></i>
         <span>Dashboard</span></a>
     </li>
@@ -55,7 +55,7 @@
     <!-- Divider -->
     <?php if ($this->session->userdata('level') == "penjual"): ?>
       <li class="nav-item active">
-        <a class="nav-link" href="<?php echo base_url('penjual/dashboard'); ?>">
+        <a class="nav-link" href="<?php echo base_url('dashboard'); ?>">
           <i class="fas fa-fw fa-tachometer-alt"></i>
           <span>Dashboard</span></a>
       </li>
@@ -113,9 +113,9 @@
       <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
         <?php if (empty($this->session->userdata('username'))): ?>
-        <a class="navbar-brand" href="<?= base_url(); ?>" style="font-size:25px; color:#4e73df;">
+        <a class="navbar-brand"  href="<?= base_url(); ?>" style="font-size:25px; color:#4e73df;">
           <i class="fas fa-store" style="font-size:35px;"></i>
-          Toko Online
+          KEBOGUYANG MART
         </a>
       <?php endif; ?>
 
