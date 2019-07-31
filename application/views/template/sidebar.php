@@ -37,17 +37,17 @@
     </li>
     <li class="nav-item active">
       <a class="nav-link" href="<?= base_url('users'); ?>">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <i class="fas fa-address-card"></i>
         <span>list admin</span></a>
     </li>
     <li class="nav-item active">
       <a class="nav-link" href="<?php echo base_url('produk'); ?>">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <i class="fas fa-book"></i>
         <span>list produk</span></a>
     </li>
     <li class="nav-item active">
       <a class="nav-link" href="<?php echo base_url('penjual'); ?>">
-        <i class="fas fa-fw fa-tachometer-alt"></i>
+        <i class="fas fa-users"></i>
         <span>list penjual</span></a>
     </li>
   <?php endif; ?>
@@ -61,7 +61,7 @@
       </li>
       <li class="nav-item active">
         <a class="nav-link" href="<?php echo base_url('produk'); ?>">
-          <i class="fas fa-fw fa-tachometer-alt"></i>
+          <i class="fas fa-book"></i>
           <span>List Produk</span></a>
       </li>
     <?php endif; ?>

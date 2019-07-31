@@ -14,6 +14,7 @@ class Model_barang extends CI_Model
   public function getBarangPenjual(){
     $this->db->select('*');
     $this->db->from('produks');
+    $this->db->join('users', 'users.id = produks.users_id');
     $this->db->where('users_id',$this->session->userdata('id'));
     return $this->db->get();
   }

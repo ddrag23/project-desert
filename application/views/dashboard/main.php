@@ -1,4 +1,4 @@
-  <?php if (empty($this->session->userdata('username'))): ?>
+<?php if (empty($this->session->userdata('username'))): ?>
 <section class="container">
 
 <div class="row text-center">

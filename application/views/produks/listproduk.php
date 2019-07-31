@@ -55,6 +55,7 @@
 							<tr>
 								<td><?php echo ++$no; ?></td>
 								<td><?php echo $row->nama; ?></td>
+								<td><?php echo $row->username; ?></td>
 								<td><?php echo $row->kategori; ?></td>
 								<td><?php echo $row->harga; ?></td>
 	              <td><?php echo $row->gambar; ?></td>
@@ -93,22 +94,19 @@
 		<div class="alert alert-success" role="alert"><?php echo $message['message']; ?></div>
 	<?php endif; ?>
 <form class="" action="<?php echo base_url('produk/add'); ?>" method="post" enctype="multipart/form-data">
-	<div class="form-row mb-2">
-		<div class="col">
+	<div class="form-group">
 			<input id="nama" class="form-control" name="nama" type="text" placeholder="Nama Barang">
-		</div>
-		<div class="col">
-			<input id="kategori" class="form-control" name="kategori" type="text" placeholder="Kategori">
-		</div>
 	</div>
-	<div class="form-row mb-2">
-		<div class="col">
+	<div class="form-group">
+
+		<input id="kategori" class="form-control" name="kategori" type="text" placeholder="Kategori">
+	</div>
+	<div class="form-group">
 			<input id="harga" class="form-control" name="harga" type="text" placeholder="Harga">
-		</div>
-		<div class="col">
-			<input id="deskripsi" class="form-control" name="deskripsi" type="text" placeholder="Deskripsi">
-		</div>
 	</div>
+	<div class="form-group">
+	 <textarea name="deskripsi" class="form-control" id="deskripsi" rows="3" placeholder="Deskripsi Barang"></textarea>
+ </div>
 	<div class="form-group">
 		<input id="gambar" class="form-control" name="gambar" type="file" placeholder="Upload Gambar">
 	</div>
