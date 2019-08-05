@@ -7,7 +7,7 @@
       <h6 class="m-0 font-weight-bold text-primary">Daftar Admin</h6>
     </div>
 
-    <d<?php if(validation_errors()): ?>
+    <?php if(validation_errors()): ?>
 			<div class="alert alert-danger" role="alert"><?php echo validation_errors('<p>', '</p>'); ?></div>
 			<?php endif; ?>
 			<?php if($message = $this->session->flashdata('message')): ?>

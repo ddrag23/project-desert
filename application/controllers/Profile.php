@@ -13,6 +13,7 @@ class Profile extends MY_Controller {
   	public function index()
 	{
 		if ($this->input->post('simpan')) {
+			$data['pasfoto'] = '';
 
 			if (!empty($_FILES['avatar']['name'])) {
 
@@ -32,7 +33,7 @@ class Profile extends MY_Controller {
 		            exit($this->upload->display_errors());
 		        }
 
-		        $data['avatar'] = $this->upload->data()['file_name'];
+		        $data['pasfoto'] = $this->upload->data()['file_name'];
 		    }
 
 
@@ -42,12 +43,15 @@ class Profile extends MY_Controller {
 		    $this->form_validation->set_message('required', '%s tidak boleh kosong!');
 
 		    if ($this->form_validation->run() === TRUE) {
-		    	$data = array(
-		    		'nama_lengkap' => $this->input->post('namalengkap'),
-		    		'alamat' => $this->input->post('alamat'),
-		    		'pasfoto' => $data['avatar'],
-		    		'notelp' => $this->input->post('notelp')
-		    	);
+		    	// $data = array(
+		    	// 	'nama_lengkap' => $this->input->post('namalengkap'),
+		    	// 	'alamat' => $this->input->post('alamat'),
+		    	// 	// 'pasfoto' => $data['avatar'],
+		    	// 	'notelp' => $this->input->post('notelp')
+		    	// );
+					$data['nama_lengkap'] = $this->input->post('namalengkap');
+        $data['alamat'] = $this->input->post('alamat');
+        $data['notelp'] = $this->input->post('notelp');
 
 		        $userId = $this->session->userdata('id');
 

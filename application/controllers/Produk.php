@@ -21,7 +21,7 @@ class Produk extends MY_Controller {
       $data['produkPenjual'] = $this->model_barang->getBarangPenjual()->result();
       $data['pageContent'] = $this->load->view('produks/listproduk', $data, TRUE);
       $this->load->view('template/layout', $data);
-			// echo json_encode($this->model_barang->get()->result());
+			// echo json_encode($this->model_barang->get_where(array('id_produk'))->row());
 			// die();
   }
 
@@ -172,8 +172,6 @@ class Produk extends MY_Controller {
 		// $data['provinsi'] = $this->model_master->getProvinsi()->result();
 		//
 		$barang = $this->model_barang->get_where(array('id_produk' => $id_produk))->row();
-
-
 		if (!$barang) show_404();
 
 		$data['pageTitle'] = 'Edit Data Produk';
@@ -200,5 +198,8 @@ public function delete($id_produk)
 }
 public function search(){
 	$keyword = $this->input->post('keyword');
+}
+public function getUbah(){
+	$data = $this->model_barang->get_where(array('id_produk'))->row();
 }
 }

@@ -7,19 +7,11 @@
       <form class="" action="" method="post">
         <!-- pemberitahuan -->
         <?php if(validation_errors()): ?>
-          <div class="col s12">
-            <div class="card-panel red">
-              <span class="white-text"><?php echo validation_errors('<p>', '</p>'); ?></span>
-            </div>
-          </div>
-        <?php endif; ?>
-        <?php if($message = $this->session->flashdata('message')): ?>
-          <div class="col s12">
-            <div class="card-panel <?php echo ($message['status']) ? 'green' : 'red'; ?>">
-              <span class="white-text"><?php echo $message['message']; ?></span>
-            </div>
-          </div>
-        <?php endif; ?>
+          <div class="alert alert-danger" role="alert"><?php echo validation_errors('<p>', '</p>'); ?></div>
+          <?php endif; ?>
+          <?php if($message = $this->session->flashdata('message')): ?>
+          <div class="alert alert-success" role="alert"><?php echo $message['message']; ?></div>
+          <?php endif; ?>
         <!-- pemeberitahuan end -->
         <!-- form isi  -->
         <?php echo form_hidden('id', $user->id); ?>

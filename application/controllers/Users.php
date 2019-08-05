@@ -52,7 +52,7 @@ class Users extends MY_Controller {
       // # required = tidak boleh kosong
       // # in_list[administrator, alumni] = hanya boleh bernilai
       //   salah satu di antara administrator atau alumni
-      $this->form_validation->set_rules('level', 'Level', 'required|in_list[administrator,penjual]');
+      // $this->form_validation->set_rules('level', 'Level', 'required|in_list[administrator,penjual]');
 
       // Mengatur validasi data active,
       // # required = tidak boleh kosong
@@ -110,7 +110,7 @@ class Users extends MY_Controller {
       // Mengatur validasi data password,
       // # required = tidak boleh kosong
       // # min_length[5] = password harus terdiri dari minimal 5 karakter
-      $this->form_validation->set_rules('password', 'Password', 'required|min_length[5]');
+      // $this->form_validation->set_rules('password', 'Password', 'required|min_length[5]');
       $this->form_validation->set_rules('namalengkap', 'Nama Lengkap', 'required');
       $this->form_validation->set_rules('alamat', 'Alamat', 'required');
       $this->form_validation->set_rules('jeniskelamin', 'Jenis Kelamin', 'required');

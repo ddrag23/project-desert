@@ -1,5 +1,5 @@
 <section class="content container-fluid">
-	<button type="button" name="button" class="btn btn-primary mb-3" data-toggle="modal" data-target="#tambah_penjual"><i class="fas fa-plus fa-sm"></i>&nbsp; Tambah Produk
+	<button type="button" name="button" class="btn btn-primary mb-3 tambahProduk" data-toggle="modal" data-target="#tambahProduk"><i class="fas fa-plus fa-sm"></i>&nbsp; Tambah Produk
 </button>
 			<?php if(validation_errors()): ?>
 			<div class="alert alert-danger" role="alert"><?php echo validation_errors('<p>', '</p>'); ?></div>
@@ -44,6 +44,7 @@
 
 								<td>
 									<a href="<?php echo base_url('produk/edit/' . $key->id_produk); ?>"><button class="btn btn-info"><i class="fas fa-edit"></i></button></a>
+									<!-- <button class="btn btn-info tampilModalUbah" data-toggle="modal" data-target="#tambahProduk"><i class="fas fa-edit" ></i></button> -->
 									<a href="<?php echo base_url('produk/delete/' . $key->id_produk); ?>"> <button class="btn btn-danger" ><i class="fas fa-trash-alt"></i></button></i></
 								</td>
 							</tr>
@@ -62,7 +63,7 @@
 	              <td><?php echo $row->deskripsi; ?></td>
 
 								<td>
-									<a href="<?php echo base_url('produk/edit/' . $row->id_produk); ?>"><button class="btn btn-info"><i class="fas fa-edit"></i></button></a>
+									<a href="<?php echo base_url('produk/edit/' . $row->id_produk); ?>"><button class="btn btn-info "><i class="fas fa-edit"></i></button></a>
 									<a href="<?php echo base_url('produk/delete/' . $row->id_produk); ?>"> <button class="btn btn-danger" ><i class="fas fa-trash-alt"></i></button></i></
 								</td>
 							</tr>
@@ -77,11 +78,11 @@
 	</div>
 
 </section>
-<div class="modal fade" id="tambah_penjual" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" class="tambahProduk" id="tambahProduk" tabindex="-1" role="dialog" aria-labelledby="formModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Tambah Produk</h5>
+        <h5 class="modal-title" id="formModalLabel">Tambah Produk</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -94,6 +95,7 @@
 		<div class="alert alert-success" role="alert"><?php echo $message['message']; ?></div>
 	<?php endif; ?>
 <form class="" action="<?php echo base_url('produk/add'); ?>" method="post" enctype="multipart/form-data">
+	<input type="hidden" name="id_produk" id="id_produk" value="">
 	<div class="form-group">
 			<input id="nama" class="form-control" name="nama" type="text" placeholder="Nama Barang">
 	</div>
